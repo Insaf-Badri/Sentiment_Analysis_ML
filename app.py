@@ -6,63 +6,65 @@ import nltk
 import emoji
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+from flask import render_template
+import matplotlib.pyplot as plt
+import io
+import base64
+
+
+
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
-
 nltk.data.path.append('./nltk_data')
-
 
 app = Flask(__name__)
 
-# Load the  model and the vectorizer
+
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 with open('vectorizer.pkl', 'rb') as f:
     vectorizer = pickle.load(f)
-
-# Define a function to clean the text   
+  
 unwanted_words = {'target', 'blank', 'http', 'www', 'src', 'img'}
-# Cleaning function
 def clean_text(text):
-    # Lowercase the text
+    
     text = text.lower()
-
-    # Remove URLs and mentions/hashtags in one step
     text = re.sub(r'http\S+|www\S+|href\S+|@\w+|#\w+', '', text)
-
-    # Remove numbers
     text = re.sub(r'\d+', '', text)
-
-    # Replace emojis with their textual meaning
     text = emoji.demojize(text, delimiters=(" ", " "))
-
-    # Remove unwanted words
     text = ' '.join([word for word in text.split() if word not in unwanted_words])
-
-    # Remove punctuation
     text = text.translate(str.maketrans('', '', string.punctuation))
-
-    # Tokenize the text
     tokens = nltk.word_tokenize(text)
-
-    # Remove stopwords but retain negations (like "not", "no")
     tokens = [word for word in tokens if word not in stop_words or word in {'not', 'no'}]
-
-    # Lemmatize tokens
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
-
-    # Rejoin tokens into a single string
     cleaned_text = ' '.join(tokens)
 
     return cleaned_text
 
+def create_chart(probabilities, classes):
+    fig, ax = plt.subplots(figsize=(4,4))
+    fig.patch.set_facecolor('none')  
+    ax.set_facecolor('none') 
+    ax.bar(classes, probabilities, color='skyblue') 
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white')  
+    ax.set_xlabel('Classes', color='white')
+    ax.set_ylabel('Probability', color='white')
+    ax.set_title('Class Probabilities', color='white')
 
-# Define the endpoint
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png", transparent=True)  #
+    buf.seek(0)
+    img_str = base64.b64encode(buf.read()).decode('utf-8')
+    buf.close()
+    
+    return img_str
+
+#  the endpoint
 @app.route('/predict', methods=['POST'])
 def predict_emotion():
     try:
-        # Get the input text from the request
         data = request.get_json()
         text = data.get('text')
 
@@ -72,17 +74,22 @@ def predict_emotion():
         processed_text = clean_text(text) 
         processed_text = vectorizer.transform([processed_text]).toarray()
         prediction = model.predict(processed_text)
-        predicted_emotion = prediction[0]
+        prediction = prediction[0]
+        # probabilities = model.predict_proba(processed_text)[0]
+        probabilities = model.predict_proba(processed_text)[0]
+        class_labels = model.classes_
+        
+        # Create the chart
+        chart = create_chart(probabilities, class_labels)
 
-        return jsonify({'text': text, 'emotion': predicted_emotion})
-    
+        return jsonify({'text': text, 'emotion': prediction, 'probabilities_chart': chart}), 200
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# Define a basic route to check API status
-@app.route('/', methods=['GET'])
+# Define a basic route to check API status but now our home page tararata 
+@app.route('/')
 def home():
-    return jsonify({'message': 'Emotion Detection API is running!'})
-
+    return render_template('index.html')
 if __name__ == '__main__':
     app.run(debug=True)

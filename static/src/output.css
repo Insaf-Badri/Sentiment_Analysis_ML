@@ -330,7 +330,12 @@ textarea {
 }
 
 input[type="text"] {
-  width: 630px; /* Adjust the width as needed */
+  width: 560px; /* Adjust the width as needed */
+}
+
+nav {
+  position:fixed;
+ 
 }
 
 /*
@@ -360,7 +365,8 @@ input:where([type='submit']) {
 }
 button {
   cursor: pointer;
-  width: 10%;
+  width: 13%;
+  height: 43px;
 }
 
 /*
