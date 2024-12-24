@@ -506,6 +506,12 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   color: #9ca3af;
   /* 2 */
 }
+.image{
+  width: 35%;
+  height: 50%;
+
+  
+}
 
 input::placeholder,
 textarea::placeholder {
@@ -587,6 +593,26 @@ video {
 
 .mt-0 {
   margin-top: 0px;
+}
+
+.overview {
+  margin-top: 7cm;
+  display: flex;
+  justify-content: space-between;
+
+}
+.about{
+  margin-top: -2.5cm;
+  width: 50%;
+}
+
+#third-section{
+  margin-top: 0px;
+  margin-left: 1.5cm;
+}
+#third-section h2{
+  margin-top: 0px;
+  margin-left: 15px;
 }
 
 .mt-4 {
