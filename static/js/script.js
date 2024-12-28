@@ -1,7 +1,7 @@
 async function getPrediction() {
     const input = document.getElementById('input_data'); 
     const output = document.getElementById('output_data'); 
-    const probabilityChart = document.getElementById('probabilityChart');
+    const probabilityChart = document.getElementById('probabilityChart').classList.remove('hidden');
 
 
     

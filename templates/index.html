@@ -53,7 +53,7 @@
         </div>
         
       </nav>
-<!-----------------main----------------->
+<!---------------------------------------Home--------------------------------------------------->
 <section>
     <div class ="flex items-center justify-center h-screen p-20">
    <div class="max-w-screen-xl mt-20">
@@ -67,6 +67,7 @@
     </div>
     </div>
   </section>
+<!---------------------------------------Service--------------------------------------------------->
 
    <section id="second-section" class="h-screen flex flex-col items-center justify-center ">
       <h2 class=" dark:text-white lg:text-6xl font-bold mb-4 ">Get Started with <span class="text-purple-300">SentiMind </span></h2>
@@ -76,10 +77,12 @@
       </div>
       <div class="mt-4  flex flex-col items-center justify-center">
         <p class="text-blue-300 text-lg"><span id="output_data"></span></p>
-        <img  id= 'probabilityChart'src="data:image/png;base64,{{ probabilities_chart }}">
+        <img  id= 'probabilityChart' class="hidden" src="data:image/png;base64,{{ probabilities_chart }}">
 
       </div>
     </section>
+
+    <!---------------------------------------About--------------------------------------------------->
     
     <section id="third-section" class="h-screen flex flex-col justify-center ">
       <div class="overview">
@@ -94,13 +97,41 @@
            <br> to accurately categorize the emotional content of the text. This approach enables SentiMind to understand and classify human emotions in written language."
             </p>
             </div>
-            
-
+      
       </div>
-            
-
-  
     </section>
+
+    <!-- <section id="Contact">
+
+      <div class="h-screen flex flex-col justify-center">
+            <div class="container mx-auto px-5 py-24">
+              <div class="mb-12 flex w-full flex-col text-center">
+                <h1 class="title-font mb-4 text-2xl font-medium text-white sm:text-3xl">Contact Us</h1>
+                <p class="mx-auto text-lg text-blue-300 lg:w-2/3">Feel free to reach out to us! Whether you have a question,
+                  feedback, or a collaboration proposal, we'd love to hear from you.</p>
+              </div>
+
+                  form
+      <div class="w-1/2 p-2">
+          <input type="text" id="name" name="name" class="rounded border bg-gray-900 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent  duration-200 ease-in-out focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900" placeholder="Name" />
+      </div> 
+      <div class="w-1/2 p-2">       
+              <input type="email" id="email" name="email" class="peer rounded border border-gray-700 bg-gray-900 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900" placeholder="Email" />
+                    </div>
+              
+      <div class="mt-4 w-full p-2">
+                    
+          <textarea id="message" name="message" class="peer h-32  resize-none rounded border border-gray-700 bg-gray-800 bg-opacity-40 py-1 px-3 text-base leading-6 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900" placeholder="Message"></textarea>
+                    </div>
+                
+                  <div class="w-full p-2">
+                    <button class="rounded-md bg-blue-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Button</button>
+                  </div>
+                </div>
+          
+      </section> -->
+
+
     
   
     
