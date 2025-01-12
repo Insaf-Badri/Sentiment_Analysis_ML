@@ -27,6 +27,7 @@ with open('vectorizer.pkl', 'rb') as f:
     vectorizer = pickle.load(f)
   
 unwanted_words = {'target', 'blank', 'http', 'www', 'src', 'img'}
+
 def clean_text(text):
     
     text = text.lower()
@@ -61,6 +62,12 @@ def create_chart(probabilities, classes):
     
     return img_str
 
+def handle_negations(text):
+    negations = {"not happy": "sad", "not sad": "happy", "not angry": "normal","not afraid": "surprised"}
+    for phrase, replacement in negations.items():
+        text = re.sub(phrase, replacement, text, flags=re.IGNORECASE)
+    return text
+
 #  the endpoint
 @app.route('/predict', methods=['POST'])
 def predict_emotion():
@@ -72,6 +79,7 @@ def predict_emotion():
             return jsonify({'error': 'No text provided'}), 400
 
         processed_text = clean_text(text) 
+        processed_text = handle_negations(processed_text)
         processed_text = vectorizer.transform([processed_text]).toarray()
         prediction = model.predict(processed_text)
         prediction = prediction[0]
