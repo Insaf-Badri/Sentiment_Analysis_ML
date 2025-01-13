@@ -44,7 +44,7 @@ The Emotion Detection project leverages machine learning techniques to analyze a
        
 ## Website
 You can cheak the website from this link : https://myflask-fufreqbscda0ayhk.eastus2-01.azurewebsites.net/
-[website](/images/img1.png)
+![website](/images/img1.png)
 
    
 ## Contact 
