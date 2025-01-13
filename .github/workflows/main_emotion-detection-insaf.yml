@@ -74,6 +74,6 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'emotion-detection-insaf'
-          slot-name :''
+          slot-name :'Production'
   
           
