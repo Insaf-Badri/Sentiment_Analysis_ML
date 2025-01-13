@@ -12,7 +12,7 @@
 The Emotion Detection project leverages machine learning techniques to analyze and classify human emotions from text data. It provides an intuitive Flask web interface where users can input text to receive emotion analysis results. This application aims to demonstrate the practical application of AI in understanding and responding to human emotions, making it valuable for domains like mental health, customer service, and user experience design.
 
 ## Project Architecture
-![Architecture](EM2.png)
+![Architecture](/images/EM2.png)
 
 ## Technologies used
 
