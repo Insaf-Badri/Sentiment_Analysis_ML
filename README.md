@@ -33,20 +33,17 @@ The Emotion Detection project leverages machine learning techniques to analyze a
    ```bash
    python -m venv venv
      source venv\Scripts\activate
-    
 2. Install the required dependencies:
    ```bash 
-   pip install -r requirements.txt
-       
+   pip install -r requirements.txt   
 3. Start the Flask server
    ```bash
-   python app.py
-       
+   python app.py     
 ## Website
 You can cheak the website from this link : https://myflask-fufreqbscda0ayhk.eastus2-01.azurewebsites.net/
+
 ![website](/images/img1.png)
 
-   
 ## Contact 
 For any inquiries or feedback, please contact:
 - <a href="https://www.linkedin.com/in/insaf-badri-588299248/" target="_blank"> Badri Insaf</a><br>
