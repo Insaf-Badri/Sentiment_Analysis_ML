@@ -55,7 +55,7 @@ def create_chart(probabilities, classes):
     ax.set_title('Class Probabilities', color='white')
 
     buf = io.BytesIO()
-    plt.savefig(buf, format="png", transparent=True)  #
+    plt.savefig(buf, format="png", transparent=True)  
     buf.seek(0)
     img_str = base64.b64encode(buf.read()).decode('utf-8')
     buf.close()
