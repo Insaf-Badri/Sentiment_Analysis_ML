@@ -11,11 +11,18 @@ import matplotlib.pyplot as plt
 import io
 import base64
 
+nltk.data.path.append('./nltk_data')
+
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
 
 
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
-nltk.data.path.append('./nltk_data')
+
 
 app = Flask(__name__)
 
