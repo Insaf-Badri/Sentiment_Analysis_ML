@@ -12,18 +12,7 @@ import io
 import base64
 
 nltk.data.path.append('./nltk_data')
-
-
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
-
-
-lemmatizer = WordNetLemmatizer()
-stop_words = set(stopwords.words('english'))
-
-
+nltk.download('stopwords', download_dir='./nltk_data')
 app = Flask(__name__)
 
 
@@ -34,6 +23,9 @@ with open('vectorizer.pkl', 'rb') as f:
     vectorizer = pickle.load(f)
   
 unwanted_words = {'target', 'blank', 'http', 'www', 'src', 'img'}
+lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words('english'))
+
 
 def clean_text(text):
     
