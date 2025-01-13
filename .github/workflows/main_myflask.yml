@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - emotion-detection-insaf
+name: Build and deploy Python app to Azure Web App - myFlask
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_56218975983D446F85F963BDBA926AB9 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7E94B9CCBF4C4D378C0A6B0BDFF38525 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_81167D3546C4433CA2689D97776E8CCF }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DCFAF598C96B4857BCEBCED1F8D890BD }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_177C2434A3884BE3B8AB21E58EFF8A22 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0089EFD6440C4169BCF82DBB3DC1205C }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'emotion-detection-insaf'
+          app-name: 'myFlask'
           slot-name: 'Production'
           
