@@ -615,6 +615,62 @@ video {
   margin-left: 15px;
 }
 
+
+@media (max-width: 640px) {
+
+   #second-section h2 {
+    margin-top: 0px;
+    margin-left: 0px;
+    font-size: 1.5rem;
+
+  }
+  #second-section input {
+    width: 100%;
+    height: 40px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  #second-section button {
+    width: 50%;
+    height: 40px;
+    margin-top: 14px;
+    align-items: center;
+  }
+
+
+  .overview {
+    margin-left: -1cm;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    
+  }
+ 
+  .about {
+    width: 100%;
+    margin-top: 0px;
+  }
+
+  .about h2 {
+    text-align: center;
+    font-size: 2.3rem;
+  }
+
+  .about p {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .fotter{
+    display: none;
+  }
+  .image{
+    width: 80%;
+    height: 90%;
+  }
+  
+}
+
+
 .mt-4 {
   margin-top: 1rem;
 }
